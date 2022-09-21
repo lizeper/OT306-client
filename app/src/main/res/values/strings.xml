@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ONGAndroid</string>
+    <string name="title_activity_menu_navigation">MenuNavigationActivity</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_dashboard">Staff</string>
+    <string name="title_notifications">Novedades</string>
+    <string name="title_contribute">Contribuir</string>
+    <string name="title_contact">Contacto</string>
 </resources>
