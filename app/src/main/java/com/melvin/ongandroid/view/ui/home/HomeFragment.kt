@@ -1,11 +1,13 @@
 package com.melvin.ongandroid.view.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,13 +35,13 @@ class HomeFragment : Fragment() {
         homeViewModel =
             ViewModelProvider(this)[HomeViewModel::class.java]
 
+
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
+       /* val textView: TextView = binding.textHome
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+            textView.text = it*/
 
         //esto es para que quede horizontal la imagen del recycle
         val recycle=binding.recicleHome
@@ -49,19 +51,39 @@ class HomeFragment : Fragment() {
         )
         recycle.layoutManager=layoutManager
 
-        val apadter=HomeAdapter(listOf("luna","lunera","Martes"),object :HomeAdapter.HomeListener{
-            override fun select(imagenes: String) {
 
+
+        val adapter=HomeAdapter(listOf())
+
+        binding.recicleHome.adapter=adapter
+
+        homeViewModel.slideLD.observe(viewLifecycleOwner,{
+            adapter.listOfString=it
+            //notificar que los datos cambiaron
+            adapter.notifyDataSetChanged()
+            //si la lista esta vacia no  muestre nada
+            if (it.isEmpty()){
+                binding.recicleHome.visibility=View.GONE
             }
-
+            //Log.e("liz","${it}")
         })
-        binding.recicleHome.adapter=apadter
-        return root
+
+
+        homeViewModel.getSlide()
+        return  root
+
+
 
     }
 
+    //aqui se pueden llamar los servicios porque la vista esta creada
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        homeViewModel.getSlide()
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }

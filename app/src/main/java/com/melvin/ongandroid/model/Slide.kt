@@ -4,8 +4,10 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 
-data class Imagenes(
+data class Slide(
 
-    @SerializedName("prueba")
-    val prueba:String,
+    @SerializedName("success")
+    val success:Boolean,
+    @SerializedName("data")
+    val imagen:List<Imagen>
 ): Serializable

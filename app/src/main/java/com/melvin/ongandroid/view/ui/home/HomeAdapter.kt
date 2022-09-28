@@ -3,22 +3,20 @@ package com.melvin.ongandroid.view.ui.home
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.melvin.ongandroid.databinding.ItemHomeBinding
+import com.melvin.ongandroid.model.Imagen
 
 class HomeAdapter(
-    var listOfString:List<String>,
-    val listener:HomeListener
+    var listOfString:List<Imagen>
     ):RecyclerView.Adapter<HomeAdapter.HomeViewHolder>(){
 
-    interface HomeListener{
-        fun select(imagenes: String)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
         //inflar la vista de  un item de la lista y crear una viewholder*****se utiliza siempre que queremos auna nueva vista
         val layoutInflater=LayoutInflater.from(parent.context)
         val binding=ItemHomeBinding.inflate(layoutInflater,parent,false)
-        return HomeViewHolder(binding,listener)
+        return HomeViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
@@ -31,14 +29,14 @@ class HomeAdapter(
         return listOfString.size
     }
 
-    class HomeViewHolder(private val binding: ItemHomeBinding,val listener:HomeListener):RecyclerView.ViewHolder(binding.root){
-        fun bind(imagenes: String) {
+    class HomeViewHolder(private val binding: ItemHomeBinding):RecyclerView.ViewHolder(binding.root){
+            fun bind(imagen: Imagen){
 
-            binding.textoPrueba.text = imagenes
+                Glide.with(binding.imagenHome)
+                    .load(imagen.image)
+                    .centerCrop()
+                    .into(binding.imagenHome);
 
-            binding.root.setOnClickListener {
-                listener.select(imagenes)
             }
-        }
     }
 }
