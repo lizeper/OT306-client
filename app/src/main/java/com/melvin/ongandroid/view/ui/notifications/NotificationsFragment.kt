@@ -1,14 +1,19 @@
 package com.melvin.ongandroid.view.ui.notifications
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.melvin.ongandroid.databinding.FragmentNotificationsBinding
+import com.melvin.ongandroid.model.Imagen
 
 class NotificationsFragment : Fragment() {
 
@@ -30,11 +35,28 @@ class NotificationsFragment : Fragment() {
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
+        val recycleNovedades=binding.recycleNovedades
+
+        val layoutManager=LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL , true)
+        recycleNovedades.layoutManager=layoutManager
+
+        val adapter=NovedadesAdapter(listOf())
+
+
+        binding.recycleNovedades.adapter=adapter
+       notificationsViewModel.prueba.observe(viewLifecycleOwner,{
+           adapter.listaNovedades=it
+           adapter.notifyDataSetChanged()
+           binding.recycleNovedades.visibility=View.VISIBLE
+           Log.e("liz","$it")
+       })
         return root
+    }
+
+    //aqui se pueden llamar los servicios porque la vista esta creada
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+            notificationsViewModel.get()
     }
 
     override fun onDestroyView() {

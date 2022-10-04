@@ -19,6 +19,8 @@ class MenuNavigationActivity : AppCompatActivity() {
 
         binding = ActivityMenuNavigationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //esta funcion quita la toolbar
+        getSupportActionBar()?.hide();
 
         val navView: BottomNavigationView = binding.navView
 
