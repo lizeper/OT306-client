@@ -18,9 +18,10 @@ class SlideRepository {
             .create(SlideService::class.java)
             .getAllSlides()
 
+
+
         service.enqueue(object:Callback<Slide>{
             override fun onResponse(call: Call<Slide>, response: Response<Slide>) {
-
                 val slide=response.body()
 
                 if(response.isSuccessful && slide!=null ) {
@@ -37,6 +38,7 @@ class SlideRepository {
         })
 
     }
+
 
 
 }

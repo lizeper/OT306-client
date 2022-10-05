@@ -32,6 +32,9 @@ class HomeAdapter(
     class HomeViewHolder(private val binding: ItemHomeBinding):RecyclerView.ViewHolder(binding.root){
             fun bind(imagen: Imagen){
 
+                binding.nameHome.text=imagen.name
+                binding.description.text=imagen.description
+
                 Glide.with(binding.imagenHome)
                     .load(imagen.image)
                     .centerCrop()

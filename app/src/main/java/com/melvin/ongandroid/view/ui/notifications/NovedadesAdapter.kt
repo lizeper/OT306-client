@@ -28,6 +28,9 @@ class NovedadesAdapter(
     class NovedadesViewHolder(private val binding: ItemNovedadesBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(slideNovedades:Imagen){
 
+            binding.nameNovedades.text=slideNovedades.name
+
+
 
             Glide.with(binding.imagenNovedades)
                 .load(slideNovedades.image)

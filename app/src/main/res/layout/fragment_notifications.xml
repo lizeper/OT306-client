@@ -25,26 +25,19 @@
         android:id="@+id/text_novedades"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="20dp"
         android:layout_margin="10dp"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/name_novedades"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recycle_novedades"/>
+
+
+
 
     <TextView
-        android:id="@+id/name_novedades"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_margin="48dp"
-        android:text="nombre de la novedad"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/recycle_novedades"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
+        android:id="@+id/button_Quiero_Ser"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginLeft="10dp"
@@ -55,7 +48,7 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_novedades" />
+        app:layout_constraintTop_toBottomOf="@id/text_novedades"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_novedades"
@@ -71,22 +64,22 @@
         android:id="@+id/imageView"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_marginRight="20dp"
         android:foregroundGravity="center_vertical"
         android:src="@mipmap/ic_arrow_right_bu"
-        android:visibility="visible"
-        android:layout_marginRight="10dp"
         android:translationZ="2dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/recycle_novedades"
         app:layout_constraintEnd_toEndOf="@id/recycle_novedades"
-        app:layout_constraintTop_toBottomOf="@+id/title_novedades" />
+        app:layout_constraintTop_toTopOf="@+id/recycle_novedades" />
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
+        android:foregroundGravity="center_vertical"
         android:src="@mipmap/ic_left_button_but"
-        android:visibility="visible"
         android:translationZ="2dp"
         app:layout_constraintBottom_toBottomOf="@+id/recycle_novedades"
         app:layout_constraintStart_toStartOf="@+id/recycle_novedades"
