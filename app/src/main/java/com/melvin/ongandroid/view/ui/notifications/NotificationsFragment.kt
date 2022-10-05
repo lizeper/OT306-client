@@ -32,6 +32,7 @@ class NotificationsFragment : Fragment() {
         notificationsViewModel =
             ViewModelProvider(this)[NotificationsViewModel::class.java]
 
+        // Inflate the layout for this fragment
         _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
@@ -48,15 +49,18 @@ class NotificationsFragment : Fragment() {
            adapter.listaNovedades=it
            adapter.notifyDataSetChanged()
            binding.recycleNovedades.visibility=View.VISIBLE
-           Log.e("liz","$it")
+
+          //Log.e("liz","${it}")
        })
+
+
         return root
     }
 
     //aqui se pueden llamar los servicios porque la vista esta creada
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-            notificationsViewModel.get()
+            notificationsViewModel.getSlideNews()
     }
 
     override fun onDestroyView() {

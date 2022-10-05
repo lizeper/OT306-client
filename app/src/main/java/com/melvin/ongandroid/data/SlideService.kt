@@ -14,6 +14,8 @@ interface SlideService {
     fun getAllSlides(): Call<Slide>
 
 
+    @GET("api/news")
+    fun getNews(): Call<Slide>
 
 
 }
