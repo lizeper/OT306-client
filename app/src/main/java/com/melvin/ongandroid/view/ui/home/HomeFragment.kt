@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.melvin.ongandroid.databinding.FragmentHomeBinding
+import com.melvin.ongandroid.view.MenuNavigationActivity
 
 
 class HomeFragment : Fragment() {
@@ -64,6 +65,9 @@ class HomeFragment : Fragment() {
             //si la lista esta vacia no  muestre nada
             if (it.isEmpty()){
                 binding.recicleHome.visibility=View.GONE
+
+
+
             }
             //Log.e("liz","${it}")
         })
