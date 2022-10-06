@@ -16,9 +16,9 @@ class HomeViewModel : ViewModel() {
       //slideLD.postValue(emptyList())
       //Log.e("liz","lista vacia ${slideLD}")
 
-       slideRepository.getAllSlides(){
+      slideRepository.getAllSlides(){
            ///no olvidar no olvidar postvalue es el retorno al activity no olvidar
-           slideLD.postValue(it.imagen)
+         slideLD.postValue(it.imagen)
        //    Log.e("liz","${it}")
         }
 
